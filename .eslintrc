@@ -1,0 +1,61 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:eslint-comments/recommended",
+    "plugin:jest/recommended",
+    "plugin:prettier/recommended",
+    "plugin:promise/recommended",
+    "plugin:import/typescript",
+    "airbnb-base",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier", "jest"],
+  "root": true,
+  "globals": {},
+  "rules": {
+    "prettier/prettier": ["error"],
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "import/extensions": ["error", "ignorePackages", { "ts": "never" }],
+    "eslint-comments/disable-enable-pair": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": false,
+        "peerDependencies": false
+      }
+    ]
+  },
+  "env": {
+    "node": true,
+    "jest/globals": true
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts"]
+    },
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
+  "overrides": [
+    {
+      "files": ["*"],
+      "rules": {
+        "@typescript-eslint/indent": "off" // Fix conflicts with prettier
+      }
+    },
+    {
+      "files": ["*"],
+      "rules": {
+        "linebreak-style": ["error", "unix"]
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
 import { ospiProService } from "../../modules/services/services";
-import OspiConnect from "../../modules/services/ospiConnect/ospiConnect";
+import ApiConnect from "../../modules/services/apiConnect/apiConnect";
 import { SWAGGER_TAGS } from "../../server/tags";
 
 const RequestParamsSchema = Type.Object({
@@ -67,14 +67,14 @@ export default (_server: FastifyInstance): StrictResource => ({
         const syncRequest = {
           source: "OSPI_PATIENT_AW",
           destination: "SAC",
-          collection: "PATIENT",
+          collection: "628694689d255b3b86ca",
           parameters: {
             userId: response.userId,
           },
         };
 
         const result = await ospiProService.createSyncToken(syncRequest);
-        OspiConnect.sync({
+        ApiConnect.sync({
           ...syncRequest,
           token: result.token,
         });

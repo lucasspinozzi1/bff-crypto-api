@@ -1,7 +1,7 @@
 {
     "name": "sld-bff",
     "version": "0.0.1",
-    "description": "Backend for Frontend",
+    "description": "Ospi Backend for Frontend",
     "main": "src/index.ts",
     "scripts": {
         "build": "rimraf dist && tsc",

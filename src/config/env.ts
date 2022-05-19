@@ -2,7 +2,7 @@ import { normalize, join } from "path";
 import * as os from "os";
 import isDocker from "is-docker";
 import { FastifyPluginOptions } from "fastify";
-import { OSPI_CONNECT_CONFIG } from "./ospiConnectConfig";
+import { CONNECT_CONFIG } from "./connectConfig";
 import { APPWRITE_CONFIG } from "./appwriteConfig";
 
 const SERVER_CONFIG = {
@@ -42,7 +42,7 @@ const environment = {
   FASTIFY_OPTIONS,
   SERVER_CONFIG,
   SERVER_URL,
-  OSPI_CONNECT_CONFIG,
+  CONNECT_CONFIG,
   APPWRITE_CONFIG,
   opsiProService: process.env.OSPI_PRO_SERVICE ?? "OSPI-PRO-EHR-1",
   sacAPIKey: process.env.SAC_API_KEY ?? "2021b698617a0651d32d036b68884541s9",

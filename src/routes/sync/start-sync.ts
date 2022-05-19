@@ -4,7 +4,9 @@ import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
 import { TypeParse, Types as T } from "typeparse";
 import { SWAGGER_TAGS } from "../../server/tags";
+import { ospiProService } from "../../modules/services/services";
 import userAuth, { decodeJWT } from "../../modules/services/auth/appwriteAuth";
+import ApiConnect from "../../modules/services/apiConnect/apiConnect";
 import { decodeB64JSON } from "../../utils/enconding";
 
 const parametersParser = new TypeParse(T.Object({ collection: T.String() }));
@@ -65,7 +67,7 @@ export default (_server: FastifyInstance): StrictResource => ({
         };
         const result = await ospiProService.createSyncToken(syncRequest);
         reply.status(201).send(result);
-        OspiConnect.sync({
+        ApiConnect.sync({
           ...syncRequest,
           token: result.token,
         });
