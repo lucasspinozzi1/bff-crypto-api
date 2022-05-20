@@ -14,11 +14,11 @@ import {
   IGetProvincesResponse,
   IGetCantonsParams,
   IGetCantonsResponse,
-  IRegisterUserParams,
-  IRegisterUserResponse,
   IUserInfoParams,
   ISyncOCParams,
   ISyncOCResponse,
+  ICreateClientParams,
+  ICreateClientResponse,
 } from "../../types";
 
 export default class Client implements IService {
@@ -100,38 +100,37 @@ export default class Client implements IService {
   }
 
   async registerUser(
-    config: IRegisterUserParams
-  ): Promise<IRegisterUserResponse> {
+    config: ICreateClientParams
+  ): Promise<ICreateClientResponse> {
     try {
-      const user = await AppWrite.getUserClient().create(
-        "unique()",
-        config.email,
-        config.password,
-        config.fullName
-      );
-      const userId = user.$id;
+      // const user = await AppWrite.getUserClient().create(
+      //   "unique()",
+      //   config.email,
+      //   config.password,
+      //   config.fullName
+      // );
 
-      const [firstName, firstLastName, secondLastName] =
-        config.fullName.split(" ");
+      const userId = '12';
+      // const [firstName, firstLastName, secondLastName] =
+      //   config.fullName.split(" ");
 
       await AppWrite.getDatabase().createDocument(
         "628694689d255b3b86ca",
         userId,
         {
-          firstName,
-          firstLastName,
-          secondLastName,
-          biologicalSex:
-            config.biologicalSex === "1" ? "Femenino" : "Masculino",
-          pronoun: config.pronoun,
-          birthDate: config.birthDate,
-          phoneNumbers: config.phoneNumbers,
-          documentType: config.documentType,
-          documentNumber: config.documentNumber,
-          district: config.district,
-          canton: config.canton,
-          province: config.province,
-          country: config.country,
+          update: '',
+          created: '',
+          provider_client_id: config.clientId,
+          first_name: config.firstName,
+          last_name: config.lastName,
+          kyc_status: '',
+          kyc_score: 0,
+          identification: config.identification,
+          allow_reload: config.allowReload,
+          allow_send: config.allowSend,
+          maximun_transaction: config.maximum_transaction,
+          maximum_recharge: config.maximum_recharge,
+          provider_metadata: ''
         }
       );
 

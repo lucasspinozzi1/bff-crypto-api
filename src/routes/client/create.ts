@@ -2,9 +2,10 @@ import { FastifyInstance } from "fastify";
 import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
-import { service } from "../../modules/services/services";
-import ApiConnect from "../../modules/services/apiConnect/apiConnect";
 import { SWAGGER_TAGS } from "../../server/tags";
+import ApiConnect from "../../modules/services/apiConnect/apiConnect";
+import { service } from "../../modules/services/services";
+
 
 const RequestParamsSchema = Type.Object({
   clientId: Type.String(),
@@ -19,7 +20,7 @@ const RequestParamsSchema = Type.Object({
 });
 
 const ResponseSchema = Type.Object({
-  userId: Type.String(),
+  
 });
 
 type RequestParamsType = Static<typeof RequestParamsSchema>;
@@ -28,7 +29,7 @@ export default (_server: FastifyInstance): StrictResource => ({
   post: {
     schema: {
       body: RequestParamsSchema,
-      tags: [SWAGGER_TAGS.USER],
+      tags: [SWAGGER_TAGS.PATIENT],
       response: {
         200: {
           ...ResponseSchema,
@@ -56,24 +57,26 @@ export default (_server: FastifyInstance): StrictResource => ({
     },
     handler: async (request, reply) => {
       try {
+        console.log("Entre al Handler: ",request)
         const config = request.body as RequestParamsType;
         const response = await service.registerUser(config);
+        console.log("pase el response");
         reply.status(200).send(response);
 
         const syncRequest = {
-          source: "AW",
-          destination: "SAC",
-          collection: "",
-          parameters: {
-            userId: response.userId,
-          },
-        };
-
-        const result = await service.createSyncToken(syncRequest);
-        ApiConnect.sync({
-          ...syncRequest,
-          token: result.token,
-        });
+            source: "OSPI_PATIENT_AW",
+            destination: "SAC",
+            collection: "628694689d255b3b86ca",
+            parameters: {
+              userId: response.userId,
+            },
+          };
+  
+          const result = await service.createSyncToken(syncRequest);
+          ApiConnect.sync({
+            ...syncRequest,
+            token: result.token,
+          });
       } catch (error) {
         if (Boom.isBoom(error)) {
           reply.status(error.output.statusCode).send(error.output.payload);

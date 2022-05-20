@@ -87,6 +87,23 @@ export interface IRegisterUserResponse {
   userId: string;
 }
 
+
+export interface ICreateClientParams {
+  clientId?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  identification: string;
+  allowReload?: boolean;
+  allowSend?: boolean;
+  maximum_transaction?: number;
+  maximum_recharge?: number;
+}
+
+export interface ICreateClientResponse {
+  userId: string;
+}
+
 export interface IService {
   getUserInfo(config: IUserInfoParams): Promise<IUserInfoResponse>;
 
@@ -96,7 +113,9 @@ export interface IService {
 
   getCantons(config: IGetCantonsParams): Promise<IGetCantonsResponse>;
 
-  registerUser(config: IRegisterUserParams): Promise<IRegisterUserResponse>;
+  getUserInfo(config: IGetUserInfoParams): Promise<IGetUserInfoResponse>;
+
+  registerUser(config: ICreateClientParams): Promise<ICreateClientResponse>;
 
   createSyncToken(config: ISyncOCParams): Promise<ISyncOCResponse>;
 }

@@ -12,10 +12,10 @@ import {
   IGetProvincesResponse,
   IGetCantonsParams,
   IGetCantonsResponse,
-  IRegisterUserParams,
   IRegisterUserResponse,
   ISyncOCParams,
   ISyncOCResponse,
+  ICreateClientParams,
 } from "../../types";
 
 export default class SACMock implements IService {
@@ -33,7 +33,7 @@ export default class SACMock implements IService {
     throw new Error("Method not implemented.");
   }
 
-  registerUser(_config: IRegisterUserParams): Promise<IRegisterUserResponse> {
+  registerUser(_config: ICreateClientParams): Promise<IRegisterUserResponse> {
     throw new Error("Method not implemented.");
   }
 
