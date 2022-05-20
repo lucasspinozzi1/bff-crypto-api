@@ -61,7 +61,7 @@ export default (_server: FastifyInstance): StrictResource => ({
     handler: async (request, reply) => {
       try {
         const config = request.body as RequestParamsType;
-        const response = await ospiProService.registerPatient(config);
+        const response = await ospiProService.registerUser(config);
         reply.status(200).send(response);
 
         const syncRequest = {

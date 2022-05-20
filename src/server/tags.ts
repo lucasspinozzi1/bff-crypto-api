@@ -24,8 +24,7 @@ import { capitalize } from "lodash";
 
 const SWAGGER_TAGS: { [name: string]: string } = {
   LOCATION: "Geolocation information endpoints",
-  PATIENT: "Patient info and clinical record",
-  GUIDE: "Ospi guide endpoints",
+  USER: "User endpoints",
 };
 
 interface SwaggerTagDefinition {
