@@ -2,7 +2,7 @@ import { FastifyInstance } from "fastify";
 import { StrictResource } from "fastify-autoroutes";
 import { Type } from "@sinclair/typebox";
 import { IGetCantonsParams } from "../../modules/services/types";
-import { ospiProService } from "../../modules/services/services";
+import { service } from "../../modules/services/services";
 import { SWAGGER_TAGS } from "../../server/tags";
 
 const RequestParamsSchema = Type.Object({
@@ -42,7 +42,7 @@ export default (_server: FastifyInstance): StrictResource => ({
     handler: async (request, reply) => {
       try {
         const params = request?.query as IGetCantonsParams;
-        const cantons = await ospiProService.getCantons(params);
+        const cantons = await service.getCantons(params);
         reply.status(200).send({ result: cantons });
       } catch (error) {
         reply.status(502).send(error.message);

@@ -44,7 +44,7 @@ const environment = {
   SERVER_URL,
   CONNECT_CONFIG,
   APPWRITE_CONFIG,
-  opsiProService: process.env.OSPI_PRO_SERVICE ?? "OSPI-PRO-EHR-1",
+  service: process.env.SERVICE ?? "",
   sacAPIKey: process.env.SAC_API_KEY ?? "2021b698617a0651d32d036b68884541s9",
   openSSLKey: process.env.OPEN_SSL_KEY ?? "0mn14pIkEyD3v",
   maxRangeMeters: 5000,

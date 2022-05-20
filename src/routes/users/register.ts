@@ -2,7 +2,7 @@ import { FastifyInstance } from "fastify";
 import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
-import { ospiProService } from "../../modules/services/services";
+import { service } from "../../modules/services/services";
 import ApiConnect from "../../modules/services/apiConnect/apiConnect";
 import { SWAGGER_TAGS } from "../../server/tags";
 
@@ -32,7 +32,7 @@ export default (_server: FastifyInstance): StrictResource => ({
   post: {
     schema: {
       body: RequestParamsSchema,
-      tags: [SWAGGER_TAGS.PATIENT],
+      tags: [SWAGGER_TAGS.USER],
       response: {
         200: {
           ...ResponseSchema,
@@ -61,19 +61,19 @@ export default (_server: FastifyInstance): StrictResource => ({
     handler: async (request, reply) => {
       try {
         const config = request.body as RequestParamsType;
-        const response = await ospiProService.registerUser(config);
+        const response = await service.registerUser(config);
         reply.status(200).send(response);
 
         const syncRequest = {
-          source: "OSPI_PATIENT_AW",
+          source: "AW",
           destination: "SAC",
-          collection: "628694689d255b3b86ca",
+          collection: "",
           parameters: {
             userId: response.userId,
           },
         };
 
-        const result = await ospiProService.createSyncToken(syncRequest);
+        const result = await service.createSyncToken(syncRequest);
         ApiConnect.sync({
           ...syncRequest,
           token: result.token,

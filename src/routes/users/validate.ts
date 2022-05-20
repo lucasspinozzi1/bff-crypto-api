@@ -1,9 +1,9 @@
 import { FastifyInstance } from "fastify";
 import { StrictResource } from "fastify-autoroutes";
 import { Type } from "@sinclair/typebox";
-import { ospiProService } from "../../modules/services/services";
+import { service } from "../../modules/services/services";
 import { SWAGGER_TAGS } from "../../server/tags";
-import { IGetUserInfoParams } from "../../modules/services/types";
+import { IUserInfoParams } from "../../modules/services/types";
 
 const RequestParamsSchema = Type.Object({
   documentType: Type.Number(),
@@ -28,7 +28,7 @@ export default (_server: FastifyInstance): StrictResource => ({
   post: {
     schema: {
       body: RequestParamsSchema,
-      tags: [SWAGGER_TAGS.PATIENT],
+      tags: [SWAGGER_TAGS.USER],
       response: {
         200: {
           ...ResponseSchema,
@@ -42,9 +42,9 @@ export default (_server: FastifyInstance): StrictResource => ({
     },
     handler: async (request, reply) => {
       try {
-        const params = request?.body as IGetUserInfoParams;
-        const patientInfo = await ospiProService.getUserInfo(params);
-        reply.status(200).send({ result: patientInfo });
+        const params = request?.body as IUserInfoParams;
+        const userInfo = await service.getUserInfo(params);
+        reply.status(200).send({ result: userInfo });
       } catch (error) {
         reply.status(502).send(error.message);
       }

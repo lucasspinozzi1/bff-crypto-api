@@ -2,7 +2,7 @@ import { FastifyInstance } from "fastify";
 import { StrictResource } from "fastify-autoroutes";
 import { Type } from "@sinclair/typebox";
 import { IGetDistrictsParams } from "../../modules/services/types";
-import { ospiProService } from "../../modules/services/services";
+import { service } from "../../modules/services/services";
 import { SWAGGER_TAGS } from "../../server/tags";
 
 const RequestParamsSchema = Type.Object({
@@ -42,7 +42,7 @@ export default (_server: FastifyInstance): StrictResource => ({
     handler: async (request, reply) => {
       try {
         const params = request?.query as IGetDistrictsParams;
-        const districts = await ospiProService.getDistricts(params);
+        const districts = await service.getDistricts(params);
         reply.status(200).send({ result: districts });
       } catch (error) {
         reply.status(502).send(error.message);

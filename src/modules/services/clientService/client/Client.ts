@@ -4,26 +4,24 @@ import Boom from "@hapi/boom";
 import environment from "../../../../config/env";
 import { HttpRequest } from "../../../http/HttpRequest";
 import AppWrite from "../../appWrite/AppWrite";
-import { patientInfoParser } from "./parsers";
+import { userInfoParser } from "./parsers";
 import {
-  IOspiProService,
-  IPatientInfoResponse,
+  IService,
+  IUserInfoResponse,
   IGetDistrictsParams,
   IGetDistrictsResponse,
   IGetProvincesParams,
   IGetProvincesResponse,
   IGetCantonsParams,
   IGetCantonsResponse,
-  IGetUserInfoParams,
-  IGetUserInfoResponse,
   IRegisterUserParams,
   IRegisterUserResponse,
-  IPatientInfoParams,
+  IUserInfoParams,
   ISyncOCParams,
   ISyncOCResponse,
 } from "../../types";
 
-export default class Client implements IOspiProService {
+export default class Client implements IService {
   private readonly baseURL = "";
 
   private client: HttpRequest;
@@ -58,15 +56,13 @@ export default class Client implements IOspiProService {
     };
   }
 
-  async getPatientInfo(
-    config: IPatientInfoParams
-  ): Promise<IPatientInfoResponse> {
+  async getUserInfo(config: IUserInfoParams): Promise<IUserInfoResponse> {
     try {
-      const resultPatient = await AppWrite.getDatabase().getDocument(
-        "patient",
+      const resultUser = await AppWrite.getDatabase().getDocument(
+        "user",
         config.userId
       );
-      return patientInfoParser.parse(resultPatient);
+      return userInfoParser.parse(resultUser);
     } catch (error) {
       if (error.code === 404) throw Boom.notFound();
       throw Boom.boomify(error, { statusCode: 500 });
@@ -98,16 +94,6 @@ export default class Client implements IOspiProService {
     const response = await this.client.post("/segundoNivelGeoAPI", {
       id_pais: config?.countryCode,
       codigoNivel1: config?.level1Code,
-    });
-
-    return response?.data;
-  }
-
-  async getUserInfo(config: IGetUserInfoParams): Promise<IGetUserInfoResponse> {
-    const response = await this.client.post("/validarPaciente", {
-      id_institucion: config?.institutionId,
-      tipo_id: config?.documentType,
-      num_id: config?.documentNumber,
     });
 
     return response?.data;

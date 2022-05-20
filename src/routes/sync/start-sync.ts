@@ -4,7 +4,7 @@ import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
 import { TypeParse, Types as T } from "typeparse";
 import { SWAGGER_TAGS } from "../../server/tags";
-import { ospiProService } from "../../modules/services/services";
+import { service } from "../../modules/services/services";
 import userAuth, { decodeJWT } from "../../modules/services/auth/appwriteAuth";
 import ApiConnect from "../../modules/services/apiConnect/apiConnect";
 import { decodeB64JSON } from "../../utils/enconding";
@@ -60,12 +60,12 @@ export default (_server: FastifyInstance): StrictResource => ({
         const syncRequest = {
           collection,
           source: "SAC",
-          destination: "OSPI_PATIENT_AW",
+          destination: "AW",
           parameters: {
             userId,
           },
         };
-        const result = await ospiProService.createSyncToken(syncRequest);
+        const result = await service.createSyncToken(syncRequest);
         reply.status(201).send(result);
         ApiConnect.sync({
           ...syncRequest,

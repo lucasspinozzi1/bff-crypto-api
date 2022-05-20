@@ -3,24 +3,22 @@
 import environment from "../../../../config/env";
 import { HttpRequest } from "../../../http/HttpRequest";
 import {
-  IOspiProService,
-  IPatientInfoParams,
-  IPatientInfoResponse,
+  IService,
+  IUserInfoParams,
+  IUserInfoResponse,
   IGetDistrictsParams,
   IGetDistrictsResponse,
   IGetProvincesParams,
   IGetProvincesResponse,
   IGetCantonsParams,
   IGetCantonsResponse,
-  IGetUserInfoParams,
-  IGetUserInfoResponse,
   IRegisterUserParams,
   IRegisterUserResponse,
   ISyncOCParams,
   ISyncOCResponse,
 } from "../../types";
 
-export default class SACMock implements IOspiProService {
+export default class SACMock implements IService {
   private readonly baseURL = "https://www.saludaunclic.com/apiSandBox";
 
   private client: HttpRequest;
@@ -39,21 +37,10 @@ export default class SACMock implements IOspiProService {
     throw new Error("Method not implemented.");
   }
 
-  async getPatientInfo(
-    _config: IPatientInfoParams
-  ): Promise<IPatientInfoResponse> {
+  async getUserInfo(_config: IUserInfoParams): Promise<IUserInfoResponse> {
     return {
-      firstName: "Tatiana",
-      firstLastName: "Vega",
-      secondLastName: "Madrigal",
-      birthDate: "1994-05-16T00:00:00Z",
-      height: 170,
-      weight: 80,
-      biologicSex: "Femenino",
-      pronoun: "Ella",
-      civilStatus: "Soltera",
-      ocupation: "Agente de Ventas",
-      address: "Montes de Oca",
+      fullName: "Tatiana Vega",
+      email: "Vega@mail.com",
     };
   }
 
@@ -84,15 +71,6 @@ export default class SACMock implements IOspiProService {
       codigoNivel1: params?.level1Code,
     });
 
-    return response?.data;
-  }
-
-  async getUserInfo(params: IGetUserInfoParams): Promise<IGetUserInfoResponse> {
-    const response = await this.client.post("/validarPaciente", {
-      id_institucion: params?.institutionId,
-      tipo_id: params?.documentType,
-      num_id: params?.documentNumber,
-    });
     return response?.data;
   }
 }

@@ -1,11 +1,11 @@
 import environment from "../../config/env";
 import SACMock from "./clientService/mock/SACMock";
 import Client from "./clientService/client/Client";
-import { IOspiProService } from "./types";
+import { IService } from "./types";
 
-export const CLIENT_SERVICES: { [id: string]: IOspiProService } = {
-  "OSPI-PRO-EHR-1": new Client(),
-  "OSPI-PRO-MOCK-1": new SACMock(),
+export const CLIENT_SERVICES: { [id: string]: IService } = {
+  A: new Client(),
+  B: new SACMock(),
 };
 
-export const ospiProService = CLIENT_SERVICES[environment.opsiProService];
+export const service = CLIENT_SERVICES[environment.service];

@@ -1,18 +1,9 @@
-export interface IPatientInfoParams {
+export interface IUserInfoParams {
   userId: string;
 }
-export interface IPatientInfoResponse {
-  firstName: string;
-  firstLastName: string;
-  secondLastName?: string;
-  birthDate: string;
-  height: number;
-  weight: number;
-  biologicSex: string;
-  pronoun: string;
-  civilStatus: string;
-  ocupation: string;
-  address: string;
+export interface IUserInfoResponse {
+  fullName: string;
+  email: string;
 }
 export interface Catalogo {
   codigo: string;
@@ -60,24 +51,6 @@ export interface IGetCantonsResponse {
   message: string;
   segundoNivel: SegundoNivel[];
 }
-
-export interface IGetUserInfoParams {
-  documentType: number;
-  documentNumber: string;
-  institutionId?: string;
-}
-
-export interface Patient {
-  name: string;
-  surname: string;
-  lastSurname: string;
-  dateOfBirth: string;
-  gender: string;
-}
-export interface IGetUserInfoResponse {
-  message: string;
-  paciente: Patient;
-}
 export interface ISyncOCParams {
   source: string;
   destination: string;
@@ -114,16 +87,14 @@ export interface IRegisterUserResponse {
   userId: string;
 }
 
-export interface IOspiProService {
-  getPatientInfo(config: IPatientInfoParams): Promise<IPatientInfoResponse>;
+export interface IService {
+  getUserInfo(config: IUserInfoParams): Promise<IUserInfoResponse>;
 
   getDistricts(config: IGetDistrictsParams): Promise<IGetDistrictsResponse>;
 
   getProvinces(config: IGetProvincesParams): Promise<IGetProvincesResponse>;
 
   getCantons(config: IGetCantonsParams): Promise<IGetCantonsResponse>;
-
-  getUserInfo(config: IGetUserInfoParams): Promise<IGetUserInfoResponse>;
 
   registerUser(config: IRegisterUserParams): Promise<IRegisterUserResponse>;
 
