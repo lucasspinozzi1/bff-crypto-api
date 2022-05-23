@@ -87,10 +87,12 @@ export default class Client implements IService {
       // 7) Falta dinamizar el mnemonic con alguna libreria de generacion.
       // 8) EL CLIENT ID TENEMOS QUE U OBTENERLO DEL JWT U OBTENERLO DEL REQUEST
       // 9) DEJAR LAS FECHAS COMO TIMESTAMP
+      // 10) Generar el ADDRESS de cada billetera.
 
       await AppWrite.getDatabase().createDocument(CLIENT_COLLECTION, clientId, {
         update: new Date().toISOString(),
         created: new Date().toISOString(),
+        clientId,
         provider_client_id: ledgerTron.data.customerId,
         first_name: firstName,
         last_name: lastName,
