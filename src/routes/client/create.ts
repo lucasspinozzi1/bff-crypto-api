@@ -53,10 +53,8 @@ export default (_server: FastifyInstance): StrictResource => ({
     },
     handler: async (request, reply) => {
       try {
-        console.log("Entre al Handler: ", request);
         const config = request.body as RequestParamsType;
         const response = await service.createClient(config);
-        console.log("pase el response");
         reply.status(200).send(response);
       } catch (error) {
         if (Boom.isBoom(error)) {

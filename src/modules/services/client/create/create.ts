@@ -43,7 +43,7 @@ export default class Client implements IService {
       const { xpub: tronXpub, mnemonic: tronMnemonic } = createTronWallet.data;
       const { xpub: ethXpub, mnemonic: ethMnemonic } = createEthWallet.data;
 
-      // 3) ASOCIA una billetera de TRON Y CREA un customer
+      // // 3) ASOCIA una billetera de TRON Y CREA un customer
       let ledgerTron = await this.client.post(`${RoutesConfig.ledgerAccount}`, {
         currency: "TRON",
         xpub: tronXpub,
@@ -58,7 +58,7 @@ export default class Client implements IService {
         accountingCurrency: "USD",
         accountNumber: identification,
       });
-      // 4) ASOCIA una billetera de ETH a un Customer Existente
+      // // 4) ASOCIA una billetera de ETH a un Customer Existente
       let ledgerEth = await this.client.post(`${RoutesConfig.ledgerAccount}`, {
         currency: "ETH",
         xpub: ethXpub,
@@ -92,8 +92,8 @@ export default class Client implements IService {
       await AppWrite.getDatabase().createDocument(CLIENT_COLLECTION, clientId, {
         update: new Date().toISOString(),
         created: new Date().toISOString(),
+        provider_client_id: 'ledgerTron.data.customerId',
         clientId,
-        provider_client_id: ledgerTron.data.customerId,
         first_name: firstName,
         last_name: lastName,
         kyc_status: "",
@@ -101,11 +101,10 @@ export default class Client implements IService {
         identification: identification,
         allow_reload: allowReload,
         allow_send: allowSend,
-        maximun_transaction: maximum_transaction,
+        maximum_transaction: maximum_transaction,
         maximum_recharge: maximum_recharge,
         provider_metadata: `${providerMetadata}`,
-      });
-
+      }).catch(err => console.log(err));
       return { accounts: [ledgerTron.data, ledgerEth.data] };
     } catch (error) {
       if (error.code === 409) throw Boom.conflict("User already registered");
