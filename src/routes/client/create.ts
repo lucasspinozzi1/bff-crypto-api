@@ -3,9 +3,7 @@ import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
 import { SWAGGER_TAGS } from "../../server/tags";
-import ApiConnect from "../../modules/services/apiConnect/apiConnect";
 import { service } from "../../modules/services/services";
-
 
 const RequestParamsSchema = Type.Object({
   clientId: Type.String(),
@@ -19,9 +17,7 @@ const RequestParamsSchema = Type.Object({
   maximum_recharge: Type.Number(),
 });
 
-const ResponseSchema = Type.Object({
-  
-});
+const ResponseSchema = Type.Object({});
 
 type RequestParamsType = Static<typeof RequestParamsSchema>;
 
@@ -57,26 +53,11 @@ export default (_server: FastifyInstance): StrictResource => ({
     },
     handler: async (request, reply) => {
       try {
-        console.log("Entre al Handler: ",request)
+        console.log("Entre al Handler: ", request);
         const config = request.body as RequestParamsType;
-        const response = await service.registerUser(config);
+        const response = await service.createClient(config);
         console.log("pase el response");
         reply.status(200).send(response);
-
-        const syncRequest = {
-            source: "OSPI_PATIENT_AW",
-            destination: "SAC",
-            collection: "628694689d255b3b86ca",
-            parameters: {
-              userId: response.userId,
-            },
-          };
-  
-          const result = await service.createSyncToken(syncRequest);
-          ApiConnect.sync({
-            ...syncRequest,
-            token: result.token,
-          });
       } catch (error) {
         if (Boom.isBoom(error)) {
           reply.status(error.output.statusCode).send(error.output.payload);

@@ -87,7 +87,6 @@ export interface IRegisterUserResponse {
   userId: string;
 }
 
-
 export interface ICreateClientParams {
   clientId?: string;
   firstName: string;
@@ -101,21 +100,24 @@ export interface ICreateClientParams {
 }
 
 export interface ICreateClientResponse {
-  userId: string;
+  accounts: Array<ICreateAccountResponse>;
+}
+
+export interface ICreateAccountResponse {
+  id: string;
+  active: boolean;
+  frozen: boolean;
+  currency: string;
+  balance: {
+    accountBalance: string;
+    availableBalance: string;
+  };
+  customerId: string;
+  accountCode: string;
+  xpub: string;
+  mnemonic: string;
 }
 
 export interface IService {
-  getUserInfo(config: IUserInfoParams): Promise<IUserInfoResponse>;
-
-  getDistricts(config: IGetDistrictsParams): Promise<IGetDistrictsResponse>;
-
-  getProvinces(config: IGetProvincesParams): Promise<IGetProvincesResponse>;
-
-  getCantons(config: IGetCantonsParams): Promise<IGetCantonsResponse>;
-
-  getUserInfo(config: IGetUserInfoParams): Promise<IGetUserInfoResponse>;
-
-  registerUser(config: ICreateClientParams): Promise<ICreateClientResponse>;
-
-  createSyncToken(config: ISyncOCParams): Promise<ISyncOCResponse>;
+  createClient(config: ICreateClientParams): Promise<ICreateClientResponse>;
 }
