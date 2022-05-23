@@ -1,5 +1,3 @@
-
-
 export default class RoutesConfig {
   static get endpoint() {
     return `https://api-us-west1.tatum.io`; // MOVE TO ENVIRONMENT VAR
@@ -19,14 +17,23 @@ export default class RoutesConfig {
   static get ledgerAccountCustomer() {
     return `${RoutesConfig.ledgerAccount}/customer`;
   }
+  static get ethereum() {
+    return `/v3/ethereum`;
+  }
+  static get tron() {
+    return `/v3/tron`;
+  }
+  static get ethereumTransactions() {
+    return `${RoutesConfig.ethereum}/account/transaction`;
+  }
   static get ethDepositAddress() {
-    return `/v3/ethereum/address`;
+    return `${RoutesConfig.ethereum}/address`;
   }
   static get ethBalanceAddress() {
     return `${RoutesConfig.ethDepositAddress}/balance`;
   }
   static get tronDepositAddress() {
-    return `/v3/tron/address`;
+    return `${RoutesConfig.tron}/address`;
   }
   static get tronBalanceAddress() {
     return `${RoutesConfig.tronDepositAddress}/balance`;

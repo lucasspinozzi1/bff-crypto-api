@@ -1,4 +1,4 @@
-import RoutesConfig from "../../../http/httpRoutes";
+import RoutesConfig from "../../http/httpRoutes";
 
 const CLIENT = { post: (a: any, b: any) => {}, get: (a: any) => {} };
 const createLedgerAccount = async () =>

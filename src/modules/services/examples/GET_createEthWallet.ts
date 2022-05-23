@@ -1,9 +1,11 @@
-import RoutesConfig from "../../../http/httpRoutes";
+import RoutesConfig from "../../http/httpRoutes";
 
 const CLIENT = { post: () => {}, get: (a: any) => {} };
 const dynamicMnemonic = "TODO";
-const createTronWallet = async () =>
-  await CLIENT.get(`${RoutesConfig.tronWallet}?mnemonic=${dynamicMnemonic}`);
+const createEthWallet = async () =>
+  await CLIENT.get(
+    `${RoutesConfig.ethereumWallet}?mnemonic=${dynamicMnemonic}`
+  );
 
 const EXAMPLE_RESPONSE = {
   mnemonic:
