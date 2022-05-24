@@ -92,7 +92,7 @@ export default class Client implements IService {
       await AppWrite.getDatabase().createDocument(CLIENT_COLLECTION, clientId, {
         update: new Date().toISOString(),
         created: new Date().toISOString(),
-        provider_client_id: 'ledgerTron.data.customerId',
+        provider_client_id: ledgerTron.data.customerId,
         clientId,
         first_name: firstName,
         last_name: lastName,

@@ -3,18 +3,11 @@ import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
 import { SWAGGER_TAGS } from "../../server/tags";
-import { service } from "../../modules/services/services";
+import { accountService } from "../../modules/services/services";
 
 const RequestParamsSchema = Type.Object({
-  clientId: Type.String(),
   firstName: Type.String(),
   lastName: Type.String(),
-  email: Type.String(),
-  identification: Type.String(),
-  allowReload: Type.Boolean(),
-  allowSend: Type.Boolean(),
-  maximum_transaction: Type.Number(),
-  maximum_recharge: Type.Number(),
 });
 
 const ResponseSchema = Type.Object({});
@@ -25,7 +18,7 @@ export default (_server: FastifyInstance): StrictResource => ({
   post: {
     schema: {
       body: RequestParamsSchema,
-      tags: [SWAGGER_TAGS.USER],
+      tags: [SWAGGER_TAGS.ACCOUNT],
       response: {
         200: {
           ...ResponseSchema,
@@ -38,7 +31,7 @@ export default (_server: FastifyInstance): StrictResource => ({
             error: { type: "string" },
             message: { type: "string" },
           },
-          description: "User already registered",
+          description: "Account already exist",
         },
         500: {
           type: "object",
@@ -54,7 +47,7 @@ export default (_server: FastifyInstance): StrictResource => ({
     handler: async (request, reply) => {
       try {
         const config = request.body as RequestParamsType;
-        const response = await service.createClient(config);
+        const response = await accountService.createAccount(config);
         reply.status(200).send(response);
       } catch (error) {
         if (Boom.isBoom(error)) {

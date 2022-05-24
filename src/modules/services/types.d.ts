@@ -121,3 +121,11 @@ export interface ICreateAccountResponse {
 export interface IService {
   createClient(config: ICreateClientParams): Promise<ICreateClientResponse>;
 }
+
+export interface IAccountCreate {
+  createAccount(config:any): Promise<any>;
+}
+
+export interface IAccountDetails{
+  getDetails(config:any): Promise<any>;
+}
