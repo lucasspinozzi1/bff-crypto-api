@@ -15,5 +15,4 @@ export default class AccountDetails {
       throw Boom.boomify(error, { statusCode: 500 });
     }
   }
-
 }
