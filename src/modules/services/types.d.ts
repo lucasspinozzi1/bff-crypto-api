@@ -87,16 +87,45 @@ export interface IRegisterUserResponse {
   userId: string;
 }
 
+export interface ICreateClientParams {
+  clientId?: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  identification: string;
+  allowReload?: boolean;
+  allowSend?: boolean;
+  maximum_transaction?: number;
+  maximum_recharge?: number;
+}
+
+export interface ICreateClientResponse {
+  accounts: Array<ICreateAccountResponse>;
+}
+
+export interface ICreateAccountResponse {
+  id: string;
+  active: boolean;
+  frozen: boolean;
+  currency: string;
+  balance: {
+    accountBalance: string;
+    availableBalance: string;
+  };
+  customerId: string;
+  accountCode: string;
+  xpub: string;
+  mnemonic: string;
+}
+
 export interface IService {
-  getUserInfo(config: IUserInfoParams): Promise<IUserInfoResponse>;
+  createClient(config: ICreateClientParams): Promise<ICreateClientResponse>;
+}
 
-  getDistricts(config: IGetDistrictsParams): Promise<IGetDistrictsResponse>;
+export interface IAccountCreate {
+  createAccount(config:any): Promise<any>;
+}
 
-  getProvinces(config: IGetProvincesParams): Promise<IGetProvincesResponse>;
-
-  getCantons(config: IGetCantonsParams): Promise<IGetCantonsResponse>;
-
-  registerUser(config: IRegisterUserParams): Promise<IRegisterUserResponse>;
-
-  createSyncToken(config: ISyncOCParams): Promise<ISyncOCResponse>;
+export interface IAccountDetails{
+  getDetails(config:any): Promise<any>;
 }

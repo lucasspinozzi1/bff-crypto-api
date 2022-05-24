@@ -44,7 +44,7 @@ const environment = {
   SERVER_URL,
   CONNECT_CONFIG,
   APPWRITE_CONFIG,
-  service: process.env.SERVICE ?? "",
+  service: process.env.SERVICE ?? "A",
   sacAPIKey: process.env.SAC_API_KEY ?? "2021b698617a0651d32d036b68884541s9",
   openSSLKey: process.env.OPEN_SSL_KEY ?? "0mn14pIkEyD3v",
   maxRangeMeters: 5000,
