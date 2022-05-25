@@ -1,9 +1,10 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable class-methods-use-this */
 import Boom from "@hapi/boom";
+import { IAccountCreate } from "../accountTypes";
 
 //TODO: USE ACCOUNT ENTITY
-export default class Account {
+export default class Account implements IAccountCreate {
   
   async createAccount(
     config: any

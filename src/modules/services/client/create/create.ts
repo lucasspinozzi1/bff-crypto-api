@@ -6,9 +6,9 @@ import { API_KEY } from "../../../http/constant";
 import { HttpRequest } from "../../../http/HttpRequest";
 import RoutesConfig from "../../../http/httpRoutes";
 import AppWrite from "../../appWrite/AppWrite";
-import { IService, ICreateClientParams, ICreateClientResponse } from "../../types";
+import { ICreateClient, ICreateClientParams, ICreateClientResponse } from "../clientTypes";
 
-export default class Client implements IService {
+export default class Client implements ICreateClient {
   private client: HttpRequest;
 
   public constructor() {
