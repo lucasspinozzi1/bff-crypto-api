@@ -90,8 +90,8 @@ export default class Client implements ICreateClient {
       // 10) Generar el ADDRESS de cada billetera.
 
       await AppWrite.getDatabase().createDocument(CLIENT_COLLECTION, clientId, {
-        update: new Date().toISOString(),
-        created: new Date().toISOString(),
+        updated: new Date().getTime(),
+        created: new Date().getTime(),
         provider_client_id: ledgerTron.data.customerId,
         clientId,
         first_name: firstName,
