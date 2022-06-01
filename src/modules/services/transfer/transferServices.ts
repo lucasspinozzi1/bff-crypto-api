@@ -1,11 +1,12 @@
 import environment from "../../../config/env";
-import { ICreateTransfer } from "./transferTypes";
+import { ITransferInToExCreate } from "./transferTypes";
+import InToExCreate from "./internal-to-external/create";
 
-import Transfer from "./create/create";
-
-export const TRANSFER_SERVICES: { [id: string]: ICreateTransfer } = {
-  A: new Transfer()
+export const TRANSFERCREATEINTOEX_SERVICES: {
+  [id: string]: ITransferInToExCreate;
+} = {
+  A: new InToExCreate()
 };
 
-export const service = TRANSFER_SERVICES[environment.service];
+export const inToExCreateService = TRANSFERCREATEINTOEX_SERVICES[environment.service];
 

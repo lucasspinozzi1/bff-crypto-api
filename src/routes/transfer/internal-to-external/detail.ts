@@ -2,8 +2,8 @@ import { FastifyInstance } from "fastify";
 import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
-import { SWAGGER_TAGS } from "../../server/tags";
-import { transferDetails } from "../../modules/services/transfer/internal-to-external/transferService";
+import { SWAGGER_TAGS } from "../../../server/tags";
+
 
 const RequestParamsSchema = Type.Object({
   id: Type.String(),
@@ -37,8 +37,8 @@ export default (_server: FastifyInstance): StrictResource => ({
     handler: async (request, reply) => {
       try {
         const config = request.body as RequestParamsType;
-        const response = await transferDetails.getDetails(config);
-        reply.status(200).send(response);
+        // const response = await transferDetails.getDetails(config);
+        reply.status(200).send();
       } catch (error) {
         if (Boom.isBoom(error)) {
           reply.status(error.output.statusCode).send(error.output.payload);
