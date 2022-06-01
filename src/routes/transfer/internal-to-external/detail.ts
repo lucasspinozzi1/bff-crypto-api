@@ -3,7 +3,7 @@ import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
 import { SWAGGER_TAGS } from "../../server/tags";
-import { transferDetails } from "../../modules/services/transfer/transferService";
+import { transferDetails } from "../../modules/services/transfer/internal-to-external/transferService";
 
 const RequestParamsSchema = Type.Object({
   id: Type.String(),
