@@ -1,6 +1,6 @@
-import { ITransferDetails } from "../transferTypes";
+import { ITransferInToInDetails } from "../transferTypes";
 
-export default class TransferDetails implements ITransferDetails {
+export default class TransferInToInDetails implements ITransferInToInDetails {
   async getDetails(): Promise<any> {
     try {
       return {};

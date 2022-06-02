@@ -1,7 +1,8 @@
 import Boom from "@hapi/boom";
-import IClientDetail  from "../clientTypes";
+import { IClientDetails } from "../../transfer/transferTypes";
 
-export default class ClientDetail implements IClientDetail {
+
+export default class ClientDetail implements IClientDetails {
   async getDetails(config: any): Promise<any> {
     try {
       console.log("GetDetail: ", config);
