@@ -1,7 +1,7 @@
 import Boom from "@hapi/boom";
-import { IReloadFromTransferCreate } from "../transferTypes";
+import { ITransferReloadFromTransferCreate } from "../transferTypes";
 
-export default class IReloadFromTransferCreate implements IReloadFromTransferCreate {
+export default class ReloadFromTransferCreate implements IReloadFromTransferCreate {
   async createReloadFromTransfer(config: any): Promise<any> {
     try {
       console.log("Create ReloadFromTransfer: ", config);
