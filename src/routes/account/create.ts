@@ -6,8 +6,18 @@ import { SWAGGER_TAGS } from "../../server/tags";
 import { accountService } from "../../modules/services/account/accountService";
 
 const RequestParamsSchema = Type.Object({
-  firstName: Type.String(),
-  lastName: Type.String(),
+  accountId: Type.Number(),
+  client_id: Type.String(),
+  max_widthdrawal_amount: Type.Number(),
+  description: Type.String(),
+  name: Type.String(),
+  providerAccountId: Type.String(),
+  currency: Type.String(),
+  providerMetadata: Type.String(),
+  status: Type.String(),
+  statusUpdateDateTime: Type.Number(),
+  type: Type.String(),
+  network: Type.String()
 });
 
 const ResponseSchema = Type.Object({});
