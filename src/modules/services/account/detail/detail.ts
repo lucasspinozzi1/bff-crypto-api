@@ -3,7 +3,7 @@
 import Boom from "@hapi/boom";
 import { IAccountDetails } from "../accountTypes";
 
-//TODO: USE ACCOUNT ENTITY
+// TODO: USE ACCOUNT ENTITY
 export default class AccountDetails implements IAccountDetails {
   async getDetails(config: any): Promise<any> {
     try {

@@ -95,12 +95,14 @@ export interface ICreateClientParams {
   identification: string;
   allowReload?: boolean;
   allowSend?: boolean;
+  // eslint-disable-next-line camelcase
   maximum_transaction?: number;
+  // eslint-disable-next-line camelcase
   maximum_recharge?: number;
 }
 
 export interface ICreateClientResponse {
-  accounts: Array<ICreateAccountResponse>;
+  client: Array<ICreateClientResponse>;
 }
 
 export interface ICreateAccountResponse {

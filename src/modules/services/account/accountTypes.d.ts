@@ -1,6 +1,8 @@
 export interface ICreateAccountParams {
   accountId?: number;
+  // eslint-disable-next-line camelcase
   client_id?: string;
+  // eslint-disable-next-line camelcase
   max_widthdrawal_amount?: number;
   description: string;
   name?: string;
@@ -14,9 +16,9 @@ export interface ICreateAccountParams {
 }
 
 export interface IAccountCreate {
-  createAccount(config:ICreateAccountParams): Promise<any>;
+  createAccount(config: ICreateAccountParams): Promise<any>;
 }
 
-export interface IAccountDetails{
-getDetails(config:any): Promise<any>;
+export interface IAccountDetails {
+  getDetails(config: any): Promise<any>;
 }
