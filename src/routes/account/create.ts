@@ -32,7 +32,7 @@ export default (_server: FastifyInstance): StrictResource => ({
       response: {
         200: {
           ...ResponseSchema,
-          description: "Successful registration",
+          description: "Successful account",
         },
         409: {
           type: "object",

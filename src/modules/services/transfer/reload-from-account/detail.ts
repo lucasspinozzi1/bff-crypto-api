@@ -1,6 +1,6 @@
-import { IReloadFromTransferDetails } from "../transferTypes";
+import { IReloadFromAccountDetails } from "../transferTypes";
 
-export default class ReloadFromTransfer implements IReloadFromTransfer {
+export default class ReloadFromAccount implements IReloadFromAccount {
   async getDetails(): Promise<any> {
     try {
       return {};

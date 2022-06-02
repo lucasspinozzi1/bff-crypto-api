@@ -1,10 +1,12 @@
 import Boom from "@hapi/boom";
-import { ITransferReloadFromTransferCreate } from "../transferTypes";
+import { IReloadFromAccountCreate } from "../transferTypes";
 
-export default class ReloadFromTransferCreate implements IReloadFromTransferCreate {
-  async createReloadFromTransfer(config: any): Promise<any> {
+export default class ReloadFromAccountCreate
+  implements IReloadFromAccountCreate
+{
+  async createReloadFromAccount(config: any): Promise<any> {
     try {
-      console.log("Create ReloadFromTransfer: ", config);
+      console.log("Create ReloadFromAccount: ", config);
       return {};
     } catch (error) {
       throw Boom.boomify(error, { statusCode: 500 });

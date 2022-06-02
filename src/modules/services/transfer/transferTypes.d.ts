@@ -14,10 +14,10 @@ export interface ITransferInToInDetails {
   getDetails(config: any): Promise<any>;
 }
 
-export interface ITransferReloadFromTransferCreate {
+export interface IReloadFromAccountCreate {
   createReloadFromTransferCreate(config: any): Promise<any>;
 }
 
-export interface ITransferReloadFromTransferDetails {
+export interface IReloadFromAccountDetails {
   getDetails(config: any): Promise<any>;
 }

@@ -37,7 +37,7 @@ export default (_server: FastifyInstance): StrictResource => ({
     handler: async (request, reply) => {
       try {
         const config = request.body as RequestParamsType;
-       // const response = await reloadDetails.getDetails(config);
+        // const response = await reloadDetails.getDetails(config);
         reply.status(200).send();
       } catch (error) {
         if (Boom.isBoom(error)) {
