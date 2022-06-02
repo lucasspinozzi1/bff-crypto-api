@@ -119,7 +119,7 @@ export default class Client implements ICreateClient {
           provider_metadata: `${providerMetadata}`,
         })
         .catch((err) => console.log(err));
-      return { accounts: [ledgerTron.data, ledgerEth.data] };
+      return { client: [ledgerTron.data, ledgerEth.data] };
     } catch (error) {
       if (error.code === 409) throw Boom.conflict("User already registered");
       throw Boom.boomify(error, { statusCode: 500 });

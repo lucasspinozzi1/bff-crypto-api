@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
+// eslint-disable-next-line import/extensions
 import { SWAGGER_TAGS } from "../server/tags";
 
 
@@ -47,6 +48,7 @@ export default (_server: FastifyInstance): StrictResource => ({
     handler: async (request, reply) => {
       try {
         const config = request.body as RequestParamsType;
+        // eslint-disable-next-line no-undef
         const response = await reloadFromAccountService.createAccount(config);
         reply.status(200).send(response);
       } catch (error) {

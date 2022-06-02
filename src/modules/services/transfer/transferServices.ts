@@ -1,12 +1,17 @@
+/* eslint-disable no-undef */
 import environment from "../../../config/env";
-import { ITransferInToExCreate } from "./transferTypes";
+import { ITransferInToExCreate, ITransferInToExDetails } from "./transferTypes";
 import InToExCreate from "./internal-to-external/create";
 
-export const TRANSFERCREATEINTOEX_SERVICES: {
+export const CREATEINTOEX_SERVICES: {
   [id: string]: ITransferInToExCreate;
 } = {
-  A: new InToExCreate()
+  A: new InToExCreate(),
 };
 
-export const inToExCreateService = TRANSFERCREATEINTOEX_SERVICES[environment.service];
+export const INTOEX_DETAILS: { [id: string]: ITransferInToExDetails } = {
+  A: new inToExtDetails()
+};
 
+export const inToExCreateService = INTOEX_CREATE[environment.service];
+export const inToExtDetails = INTOEX_DETAILS[environment.service];

@@ -3,7 +3,7 @@ import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
 import { SWAGGER_TAGS } from "../../server/tags";
-import { clientDetail } from "../modules/services/client/clientService";
+import { clientDetails } from "../../modules/services/client/clientServices";
 
 const RequestParamsSchema = Type.Object({
   id: Type.String(),
@@ -37,7 +37,7 @@ export default (_server: FastifyInstance): StrictResource => ({
     handler: async (request, reply) => {
       try {
         const config = request.body as RequestParamsType;
-        const response = await clientDetail.getDetails(config);
+        const response = await clientDetails.getDetails(config);
         reply.status(200).send(response);
       } catch (error) {
         if (Boom.isBoom(error)) {
