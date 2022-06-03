@@ -5,25 +5,22 @@ import Boom from "@hapi/boom";
 import { SWAGGER_TAGS } from "../../server/tags";
 import { accountList } from "../../modules/services/account/accountService";
 
-
 const ResponseSchema = Type.Object({
-  
+  clientId: Type.String(),
+  accounts: Type.Array(
+    Type.Object({
+      accountId: Type.String(),
       clientId: Type.String(),
-      accounts: Type.Array(
-        Type.Object({
-          accountId: Type.String(),
-          clientId: Type.String(),
-          status: Type.String(),
-          statusUpdateDateTime: Type.String(),
-          nickName: Type.String(),
-          adress: Type.String(),
-          currency: Type.String(),
-          availableBalance: Type.String(),
-          xpub: Type.String(),
-        })
-      )
+      status: Type.String(),
+      statusUpdateDateTime: Type.String(),
+      nickName: Type.String(),
+      adress: Type.String(),
+      currency: Type.String(),
+      availableBalance: Type.String(),
+      xpub: Type.String(),
+    })
+  ),
 });
-
 
 export default (_server: FastifyInstance): StrictResource => ({
   get: {
@@ -47,7 +44,8 @@ export default (_server: FastifyInstance): StrictResource => ({
     },
     handler: async (request, reply) => {
       try {
-        const response = await accountList.listAccounts();
+        const config = request.body;
+        const response = await accountList.listAccounts(config);
         reply.status(200).send(response);
       } catch (error) {
         if (Boom.isBoom(error)) {

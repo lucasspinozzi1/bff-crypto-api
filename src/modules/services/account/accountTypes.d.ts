@@ -20,19 +20,19 @@ export interface IAccountListParams {
 }
 
 export interface IBalance {
-  accountId: string | any, 
-  clientId: string | any,
-  status: string | any,
-  statusUpdateDateTime: number | any,
-  nickName: string | any,
-  adress: string | any,
-  currency: string | any,
-  availableBalance: number | any,
-  xpub: string | any
+  accountId: string | any;
+  clientId: string | any;
+  status: string | any;
+  statusUpdateDateTime: number | any;
+  nickName: string | any;
+  adress: string | any;
+  currency: string | any;
+  availableBalance: number | any;
+  xpub: string | any;
 }
 
 export interface IAccountBalance {
-  clientId: string,
+  clientId: string;
   accounts: Array<IBalance> | any;
 }
 
@@ -41,22 +41,22 @@ export interface IAccountListResponse {
 }
 
 export interface IAccountCreate {
-  createAccount(config:ICreateAccountParams): Promise<any>;
+  createAccount(config: ICreateAccountParams): Promise<any>;
 }
 
-export interface IAccountDetails{
-getDetails(config:any): Promise<any>;
+export interface IAccountDetails {
+  getDetails(config: any): Promise<any>;
 }
 
 export interface IParseAccount {
-  name: string,
-  client_id: string,
-  status: string,
-  statusUpdateDateTime: number,
-  nickName: string,
-  adress: string
+  name: string;
+  client_id: string;
+  status: string;
+  statusUpdateDateTime: number;
+  nickName: string;
+  adress: string;
 }
 
-export interface IAccountList{
-  listAccounts():Promise<IAccountBalance>;
+export interface IAccountList {
+  listAccounts(config: any): Promise<IAccountBalance>;
 }
