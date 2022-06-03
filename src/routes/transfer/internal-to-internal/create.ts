@@ -18,11 +18,11 @@ export default (_server: FastifyInstance): StrictResource => ({
   post: {
     schema: {
       body: RequestParamsSchema,
-      tags: [SWAGGER_TAGS.ACCOUNT],
+      tags: [SWAGGER_TAGS.TRANSFER],
       response: {
         200: {
           ...ResponseSchema,
-          description: "Successful registration",
+          description: "Successful Transfer",
         },
         409: {
           type: "object",
@@ -31,7 +31,7 @@ export default (_server: FastifyInstance): StrictResource => ({
             error: { type: "string" },
             message: { type: "string" },
           },
-          description: "Acco already exist",
+          description: "Transfer already exist",
         },
         500: {
           type: "object",

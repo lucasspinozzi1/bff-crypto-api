@@ -2,8 +2,7 @@ import { FastifyInstance } from "fastify";
 import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
-// eslint-disable-next-line import/extensions
-import { SWAGGER_TAGS } from "../server/tags";
+import { SWAGGER_TAGS } from "../../../server/tags";
 
 
 const RequestParamsSchema = Type.Object({
