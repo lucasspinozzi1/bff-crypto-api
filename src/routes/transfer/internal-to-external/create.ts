@@ -3,7 +3,6 @@ import { Type, Static } from "@sinclair/typebox";
 import { FastifyInstance } from "fastify";
 import { StrictResource } from "fastify-autoroutes";
 import { inToExCreateService } from "../../../modules/services/transfer/transferServices";
-
 import { SWAGGER_TAGS } from "../../../server/tags";
 
 const RequestParamsSchema = Type.Object({

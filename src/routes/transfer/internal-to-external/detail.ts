@@ -36,6 +36,7 @@ export default (_server: FastifyInstance): StrictResource => ({
     },
     handler: async (request, reply) => {
       try {
+        
         const config = request.body as RequestParamsType;
         // const response = await transferDetails.getDetails(config);
         reply.status(200).send();

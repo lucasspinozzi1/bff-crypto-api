@@ -1,9 +1,7 @@
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable class-methods-use-this */
 import Boom from "@hapi/boom";
 import { IReloadFromAccountDetails } from "../transferTypes";
 
-export default class ReloadFromAccount implements IReloadFromAccount {
+export default class ReloadFromAccount implements ITransferReloadFromAccount {
   async getDetails(): Promise<any> {
     try {
       // eslint-disable-next-line no-console
