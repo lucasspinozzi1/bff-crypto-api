@@ -1,12 +1,11 @@
 import Boom from "@hapi/boom";
-import { Query } from "node-appwrite";
 import { ACCOUNT_COLLECTION } from "../../../appWrite/collectionRoutes";
 import { accountParser } from "../../../appWrite/helper/parser";
 import { API_KEY } from "../../../http/constant";
 import HttpRequest from "../../../http/HttpRequest";
 import RoutesConfig from "../../../http/httpRoutes";
 import AppWrite from "../../appWrite/AppWrite";
-import { IAccountBalance, IAccountList, IAccountListParams, IBalance } from "../accountTypes";
+import { IAccountBalance, IAccountList, IBalance } from "../accountTypes";
 
 
 
@@ -67,12 +66,9 @@ export default class AccountList implements IAccountList {
 
       const response: IAccountBalance = {
         clientId: customerId,
-        balance: walletAccountBalance
+        accounts: walletAccountBalance
       }
-
-      console.log(response);
-      
-               
+           
       return response;
 
     } catch (error) {

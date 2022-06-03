@@ -1,6 +1,6 @@
 import { FastifyInstance } from "fastify";
 import { StrictResource } from "fastify-autoroutes";
-import { Static, Type } from "@sinclair/typebox";
+import { Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
 import { SWAGGER_TAGS } from "../../server/tags";
 import { accountList } from "../../modules/services/account/accountService";
@@ -9,7 +9,7 @@ import { accountList } from "../../modules/services/account/accountService";
 const ResponseSchema = Type.Object({
   
       clientId: Type.String(),
-      balance: Type.Array(
+      accounts: Type.Array(
         Type.Object({
           accountId: Type.String(),
           clientId: Type.String(),

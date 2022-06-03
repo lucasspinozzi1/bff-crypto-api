@@ -33,7 +33,7 @@ export interface IBalance {
 
 export interface IAccountBalance {
   clientId: string,
-  balance: Array<IBalance> | any;
+  accounts: Array<IBalance> | any;
 }
 
 export interface IAccountListResponse {
