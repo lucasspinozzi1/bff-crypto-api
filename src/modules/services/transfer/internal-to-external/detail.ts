@@ -4,7 +4,7 @@ import Boom from "@hapi/boom";
 import { ITransferInToExDetails } from "../transferTypes";
 
 // TODO: USE ACCOUNT ENTITY
-export default class TransferInToExDetail implements ITransferInToExDetails {
+export default class TransferInToExDetails implements ITransferInToExDetails {
   async getDetails(config: any): Promise<any> {
     try {
       // eslint-disable-next-line no-console

@@ -14,3 +14,5 @@ export const INTOEX_DETAILS: { [id: string]: ITransferInToExDetails } = {
 
 export const inToExCreateService = INTOEX_CREATE[environment.service];
 export const inToExtDetails = INTOEX_DETAILS[environment.service];
+export const inToInCreateService = INTOIN_CREATE[environment.service];
+export const inToInDetails = INTOIN_DETAILS[environment.service];
