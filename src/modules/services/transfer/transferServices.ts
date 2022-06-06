@@ -1,18 +1,18 @@
 import environment from "../../../config/env";
 import { ITransferInToExCreate, ITransferInToExDetails } from "./transferTypes";
-import InToExCreate from "./internal-to-external/create";
+import TransferInToExCreate from "./internal-to-external/create";
 
 export const CREATEINTOEX_SERVICES: {
   [id: string]: ITransferInToExCreate;
 } = {
-  A: new InToExCreate(),
+  A: new TransferInToExCreate(),
 };
 
 export const INTOEX_DETAILS: { [id: string]: ITransferInToExDetails } = {
-  A: new InToExtDetails(),
+  A: new TransferInToExtDetails(),
 };
 
-export const inToExCreateService = INTOEX_CREATE[environment.service];
-export const inToExtDetails = INTOEX_DETAILS[environment.service];
-export const inToInCreateService = INTOIN_CREATE[environment.service];
-export const inToInDetails = INTOIN_DETAILS[environment.service];
+export const transferInToExCreateService = TRANSFERINTOEX_CREATE[environment.service];
+export const transferInToExtDetails = TRANSFERINTOEX_DETAILS[environment.service];
+export const transferInToInCreateService = TRANSFERINTOIN_CREATE[environment.service];
+export const transferInToInDetails = TRANSFERINTOIN_DETAILS[environment.service];

@@ -6,7 +6,6 @@ export interface IClientDetails {
   getDetails(config: any): Promise<any>;
 }
 
-
 export interface ITransferInToExCreate {
   createInToEx(config: any): Promise<any>;
 }

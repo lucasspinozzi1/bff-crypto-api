@@ -1,10 +1,10 @@
 import Boom from "@hapi/boom";
 import { ITransferInToExCreate } from "../transferTypes";
 
-export default class InToExCreate implements ITransferInToExCreate {
-  async createInToEx(config: any): Promise<any> {
+export default class TransferInToExCreate implements ITransferInToExCreate {
+  async transferCreateInToEx(config: any): Promise<any> {
     try {
-      console.log("Create InToEx: ", config);
+      console.log("Create TransferInToEx: ", config);
       return {};
     } catch (error) {
       throw Boom.boomify(error, { statusCode: 500 });
