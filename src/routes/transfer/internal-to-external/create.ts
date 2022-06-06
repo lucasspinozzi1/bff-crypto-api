@@ -3,7 +3,7 @@ import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
 import { SWAGGER_TAGS } from "../../../server/tags";
-import { inToExCreateService } from "../../../modules/services/transfer/transferServices";
+import { transferInToExCreateService } from "../../../modules/services/transfer/transferServices";
 
 
 const RequestParamsSchema = Type.Object({
@@ -49,7 +49,9 @@ export default (_server: FastifyInstance): StrictResource => ({
       try {
         const config = request.body as RequestParamsType;
         // eslint-disable-next-line no-undef
-        const response = await inToExCreateService.createAccount(config);
+        const response = await transferInToExCreateService.createAccount(
+          config
+        );
         reply.status(200).send(response);
       } catch (error) {
         if (Boom.isBoom(error)) {

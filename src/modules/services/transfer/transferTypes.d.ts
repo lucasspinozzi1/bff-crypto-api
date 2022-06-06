@@ -1,5 +1,5 @@
 export interface IClientCreate {
-  createInToEx(config: any): Promise<any>;
+  createTransferInToEx(config: any): Promise<any>;
 }
 
 export interface IClientDetails {
@@ -7,7 +7,7 @@ export interface IClientDetails {
 }
 
 export interface ITransferInToExCreate {
-  createInToEx(config: any): Promise<any>;
+  createTransferInToEx(config: any): Promise<any>;
 }
 
 export interface ITransferInToExDetails {
@@ -15,17 +15,17 @@ export interface ITransferInToExDetails {
 }
 
 export interface ITransferInToInCreate {
-  createInToIn(config: any): Promise<any>;
+  createTransferInToIn(config: any): Promise<any>;
 }
 
 export interface ITransferInToInDetails {
   getDetails(config: any): Promise<any>;
 }
 
-export interface ITransferReloadFromAccountCreate {
-  createReloadFromTransferCreate(config: any): Promise<any>;
+export interface IReloadFromAccountCreate {
+  createReloadFromAccount(config: any): Promise<any>;
 }
 
-export interface ITransferReloadFromAccountDetails {
+export interface IReloadFromAccountDetails {
   getDetails(config: any): Promise<any>;
 }
