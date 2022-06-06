@@ -1,6 +1,11 @@
 import environment from "../../../config/env";
 import TransferInToExCreate from "./internal-to-external/create";
-import { ITransferInToExCreate, ITransferInToExDetails } from "./transferTypes";
+import {
+  IReloadFromAccountCreate,
+  IReloadFromAccountDetails,
+  ITransferInToExCreate,
+  ITransferInToExDetails,
+} from "./transferTypes";
 import TransferInToInCreate from "./internal-to-internal/create";
 import TransferInToExDetails from "./internal-to-external/detail";
 import TransferInToInDetails from "./internal-to-internal/detail";
@@ -35,7 +40,7 @@ export const ITRANSFERINTOIN_DETAILS: { [id: string]: ITransferInToExDetails } =
   };
 
 export const transferInToInCreateService =
-  TRANSFERINTOIN_CREATE[environment.service];
+  TRANSFERINTOIN_DETAILS[environment.service];
 export const transferInToINDetails =
   ITRANSFERINTOIN_DETAILS[environment.service];
 
