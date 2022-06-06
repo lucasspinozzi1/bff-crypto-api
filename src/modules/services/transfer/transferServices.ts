@@ -9,7 +9,7 @@ export const CREATEINTOEX_SERVICES: {
 };
 
 export const INTOEX_DETAILS: { [id: string]: ITransferInToExDetails } = {
-  A: new TransferInToExtDetails(),
+  A: new transferInToExtDetails(),
 };
 
 export const transferInToExCreateService = TRANSFERINTOEX_CREATE[environment.service];
