@@ -11,6 +11,7 @@ export interface ITransferInToExCreate {
 }
 
 export interface ITransferInToExDetails {
+  createAccount(config: { firstName: string; lastName: string; });
   getDetails(config: any): Promise<any>;
 }
 

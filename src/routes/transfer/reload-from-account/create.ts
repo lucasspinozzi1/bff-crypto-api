@@ -3,7 +3,7 @@ import { StrictResource } from "fastify-autoroutes";
 import { Static, Type } from "@sinclair/typebox";
 import Boom from "@hapi/boom";
 import { SWAGGER_TAGS } from "../../../server/tags";
-
+import { reloadFromAccountCreateService } from "../../../modules/services/transfer/transferServices";
 
 const RequestParamsSchema = Type.Object({
   firstName: Type.String(),
@@ -18,7 +18,7 @@ export default (_server: FastifyInstance): StrictResource => ({
   post: {
     schema: {
       body: RequestParamsSchema,
-      tags: [SWAGGER_TAGS.RELOADFROMACCOUNT],
+      tags: [SWAGGER_TAGS.TRANSFER],
       response: {
         200: {
           ...ResponseSchema,
@@ -48,7 +48,9 @@ export default (_server: FastifyInstance): StrictResource => ({
       try {
         const config = request.body as RequestParamsType;
         // eslint-disable-next-line no-undef
-        const response = await reloadFromAccountService.createAccount(config);
+        const response = await reloadFromAccountCreateService.createAccount(
+          config
+        );
         reply.status(200).send(response);
       } catch (error) {
         if (Boom.isBoom(error)) {

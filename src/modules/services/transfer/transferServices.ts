@@ -40,11 +40,11 @@ export const ITRANSFERINTOIN_DETAILS: { [id: string]: ITransferInToExDetails } =
   };
 
 export const transferInToInCreateService =
-  TRANSFERINTOIN_DETAILS[environment.service];
+  ITRANSFERINTOIN_DETAILS[environment.service];
 export const transferInToINDetails =
   ITRANSFERINTOIN_DETAILS[environment.service];
 
-export const RELOADFROMACCOUNT_SERVICES: {
+export const IRELOADFROMACCOUNT_SERVICES: {
   [id: string]: IReloadFromAccountCreate;
 } = {
   A: new ReloadFromAccountCreate(),
