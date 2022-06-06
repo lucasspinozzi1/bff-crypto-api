@@ -5,6 +5,8 @@ import {
   IReloadFromAccountDetails,
   ITransferInToExCreate,
   ITransferInToExDetails,
+  ITransferInToInCreate,
+  ITransferInToInDetails,
 } from "./transferTypes";
 import TransferInToInCreate from "./internal-to-internal/create";
 import TransferInToExDetails from "./internal-to-external/detail";
@@ -24,27 +26,28 @@ export const TRANSFERINTOEX_DETAILS: { [id: string]: ITransferInToExDetails } =
   };
 
 export const transferInToExCreateService =
-  TRANSFERINTOEX_CREATE[environment.service];
+  CREATETRANSFERINTOEX_SERVICES[environment.service];
+
 export const transferInToExtDetails =
   TRANSFERINTOEX_DETAILS[environment.service];
 
 export const CREATETRANSFERINTOIN_SERVICES: {
-  [id: string]: ITransferInToExCreate;
+  [id: string]: ITransferInToInCreate;
 } = {
   A: new TransferInToInCreate(),
 };
 
-export const ITRANSFERINTOIN_DETAILS: { [id: string]: ITransferInToExDetails } =
+export const TRANSFERINTOIN_DETAILS: { [id: string]: ITransferInToInDetails } =
   {
     A: new TransferInToInDetails(),
   };
 
 export const transferInToInCreateService =
-  ITRANSFERINTOIN_DETAILS[environment.service];
-export const transferInToINDetails =
-  ITRANSFERINTOIN_DETAILS[environment.service];
+  CREATETRANSFERINTOIN_SERVICES[environment.service];
+export const transferInToInDetails =
+  TRANSFERINTOIN_DETAILS[environment.service];
 
-export const IRELOADFROMACCOUNT_SERVICES: {
+export const RELOADFROMACCOUNT_SERVICES: {
   [id: string]: IReloadFromAccountCreate;
 } = {
   A: new ReloadFromAccountCreate(),
@@ -57,6 +60,6 @@ export const IRELOADFROMACCOUNT_DETAILS: {
 };
 
 export const reloadFromAccountCreateService =
-  RELOADFROMACCOUNT_CREATE[environment.service];
+  RELOADFROMACCOUNT_SERVICES[environment.service];
 export const reloadFromAccountDetails =
   IRELOADFROMACCOUNT_DETAILS[environment.service];

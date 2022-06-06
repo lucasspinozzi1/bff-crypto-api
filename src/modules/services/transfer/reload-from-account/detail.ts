@@ -1,8 +1,10 @@
 import Boom from "@hapi/boom";
-import { ITransferReloadFromAccountDetails } from "../transferTypes";
+import { IReloadFromAccountDetails } from "../transferTypes";
 
-export default class ReloadFromAccountDetails implements ITransferReloadFromAccountDetails {
-  async getDetails(): Promise<any> {
+export default class ReloadFromAccountDetails
+  implements IReloadFromAccountDetails
+{
+  async getDetails(config: any): Promise<any> {
     try {
       console.log("GetDetails: ", config);
       return {};

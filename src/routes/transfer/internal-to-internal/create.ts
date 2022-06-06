@@ -48,7 +48,7 @@ export default (_server: FastifyInstance): StrictResource => ({
       try {
         const config = request.body as RequestParamsType;
         // eslint-disable-next-line no-undef
-        const response = await transferInToInCreateService.createAccount(
+        const response = await transferInToInCreateService.createTransferInToIn(
           config
         );
         reply.status(200).send(response);

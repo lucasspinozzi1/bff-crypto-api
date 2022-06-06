@@ -48,9 +48,8 @@ export default (_server: FastifyInstance): StrictResource => ({
       try {
         const config = request.body as RequestParamsType;
         // eslint-disable-next-line no-undef
-        const response = await reloadFromAccountCreateService.createAccount(
-          config
-        );
+        const response =
+          await reloadFromAccountCreateService.createReloadFromAccount(config);
         reply.status(200).send(response);
       } catch (error) {
         if (Boom.isBoom(error)) {

@@ -5,7 +5,6 @@ import Boom from "@hapi/boom";
 import { SWAGGER_TAGS } from "../../../server/tags";
 import { transferInToExCreateService } from "../../../modules/services/transfer/transferServices";
 
-
 const RequestParamsSchema = Type.Object({
   firstName: Type.String(),
   lastName: Type.String(),
@@ -49,7 +48,7 @@ export default (_server: FastifyInstance): StrictResource => ({
       try {
         const config = request.body as RequestParamsType;
         // eslint-disable-next-line no-undef
-        const response = await transferInToExCreateService.createAccount(
+        const response = await transferInToExCreateService.createTransferInToEx(
           config
         );
         reply.status(200).send(response);
